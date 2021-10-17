@@ -1,0 +1,53 @@
+// In this project we will write a Java program that determines the best fare option for someone visiting New York City who plans to use the NYC transit system.
+public class TransitCalculator{
+  int noOfDaysUsingTransit;
+  int noOfRides;
+  String[] fareOptions = {"Pay-per-ride", "7-day Unlimited", "30-day Unlimited"};
+
+
+  public TransitCalculator(a,b) {
+    noOfDaysUsingTransit = a;  
+    noOfRides = b;
+  }
+
+  double singleRide= 2.75;
+  double sevenUnlimitedRides=33;
+  double thirtyUnlimitedRides= 127;
+
+  double unlimited7Price(){
+    noOfWeeksCardIsNecessaryFor= Math.ceil(noOfRides/7);
+
+    totalCost= noOfWeeksCardIsNecessaryFor*sevenUnlimitedRides;
+
+    return totalCost/noOfRides;
+  }
+
+double [] getRidePrices(){
+  double pricePerRide= singleRide;
+  double price7Price= unlimited7Price();
+  double price30Price= thirtyUnlimitedRides/noOfRides;
+  double prices[]={pricePerRide, price7Price, price30Price};
+return prices;
+}
+
+String getBestFare(){
+  int a;
+  for(i=0; i<3; i++){
+    if(prices[i]< prices[a]){
+     a=i;
+    }
+  }
+  return "You should get the " + fareOptions[a] + "option at $"+ prices[a] + "per ride";
+}
+
+  public static void main(String[] args){
+    noOfDaysUsingTransit=30;
+    noOfRides= 16;
+    TransitCalculator transitCalc = new TransitCalculator(noOfDaysUsingTransit, noOfRides);
+
+    System.out.println(transitCalc.getBestFare());
+
+  }
+
+
+}
